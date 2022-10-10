@@ -1,4 +1,4 @@
-# Sample Make PDF demo application developed using below mentioned technogies.
+# Sample Make PDF demo application developed using below mentioned technologies.
 # UI - Qasaur 2, Vue 1
   1. Quasar Design 2.6
   2. Vue Components
