@@ -1,6 +1,6 @@
 # Quasar App (pdf-gen-sample)
 
-A Quasar Project
+A Quasar Project to generate PDF in UI and send email
 
 ## Install the dependencies
 
