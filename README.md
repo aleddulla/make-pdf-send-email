@@ -1,11 +1,41 @@
-# make-pdf-send-email
+# Quasar App (pdf-gen-sample)
 
-Application is developed using below technologies
-# UI:
-  1. Quasar Framework Design
-  2. Vue Components
-# Backend:
-  1. Java 8
-  2. Spring boot 2.7
-  3. Tomcat
-  4. Spring boot mail
+A Quasar Project
+
+## Install the dependencies
+```bash
+yarn
+# or
+npm install
+```
+
+### Start the app in development mode (hot-code reloading, error reporting, etc.)
+```bash
+quasar dev
+```
+
+
+### Lint the files
+```bash
+yarn lint
+# or
+npm run lint
+```
+
+
+### Format the files
+```bash
+yarn format
+# or
+npm run format
+```
+
+
+
+### Build the app for production
+```bash
+quasar build
+```
+
+### Customize the configuration
+See [Configuring quasar.config.js](https://v2.quasar.dev/quasar-cli-webpack/quasar-config-js).
