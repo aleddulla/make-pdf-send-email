@@ -1,15 +1,15 @@
 <template>
-  <div id="app" style="min-height: 0px !important" class="row items-start">
-    <router-view></router-view>
-  </div>
   <div
     id="app"
-    class="row justify-center"
-    style="width: 100%; display: flex; max-width: 100%"
+    style="min-height: 0px !important"
+    class="row items justify-start"
   >
-    <div class="q-gutter-sm row items-start" style="width: 40%">
-      <div class="q-pa-md" style="width: 100%">
-        <span class="header-text">Document Upload</span>
+    <router-view></router-view>
+  </div>
+  <div id="app" class="row justify-center">
+    <div class="col-xs-12 col-sm-6 col-md-4 items-start">
+      <div>
+        <span class="header-text">Export PDF</span>
         <q-form @submit="exportToPDF" @reset="onReset" class="q-gutter-md">
           <div class="q-pa-md" style="width: 100%">
             <q-input
@@ -25,7 +25,7 @@
         </q-form>
       </div>
     </div>
-    <div class="q-gutter-sm row items-start" style="width: 40%">
+    <!--div class="q-gutter-sm row items-start">
       <div class="q-pa-md">
         <div class="document-upload">
           <span class="header-text">Document Upload</span>
@@ -35,7 +35,7 @@
           <q-btn @click="uploadFile()">Upload</q-btn>
         </div>
       </div>
-    </div>
+    </div-->
   </div>
 </template>
 
