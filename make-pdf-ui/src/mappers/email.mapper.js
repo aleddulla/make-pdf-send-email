@@ -2,7 +2,7 @@ import axios from "axios";
 import { Notify } from "quasar";
 import { notifyMessage } from "./notify";
 
-export const makePDFSendEmailBinary = (docDefinition) => {
+export const makePDFSendEmailBinary = (docDefinition, loader) => {
   return pdfMake.createPdf(docDefinition).getBuffer(function (buffer) {
     var blob = new Blob([buffer]);
     var reader = new FileReader();
@@ -11,18 +11,20 @@ export const makePDFSendEmailBinary = (docDefinition) => {
       let fd = new FormData();
       //fd.append("fname", "srikanth.pdf");
       //convert base64 to binary/blob
+      loader.show();
       let blob1 = fetch(event.target.result).then((r) => r.blob());
       fd.append("file", base64ToBlob(event.target.result));
       axios
         .post("http://localhost:8080/api/email/upload", fd, createHeaders())
         .then(function (response) {
+          loader.hide();
           if (response && response.data && response?.data?.message) {
             notifyMessage("teal", response.data.message, "thumb_up");
           }
         })
         .catch(function (response) {
           console.log(response);
-
+          loader.hide();
           Notify.create({
             color: "negative",
             message:
