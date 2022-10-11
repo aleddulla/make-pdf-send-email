@@ -14,7 +14,7 @@
           <div class="q-pa-md" style="width: 100%">
             <q-input
               v-model="text"
-              label="no resize arrow"
+              label="Make Pdf Template"
               type="textarea"
               style="border: 1px solid grey; padding: 5px"
             />
@@ -48,7 +48,7 @@ import pdfFonts from "pdfmake/build/vfs_fonts";
 import { ref } from "vue";
 import { notifyMessage } from "./mappers/notify";
 import { makePDFSendEmailBinary } from "./mappers/email.mapper";
-
+import { useQuasar } from "quasar";
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 export default {
@@ -56,7 +56,7 @@ export default {
 
   setup() {
     const text = ref(null);
-
+    const $q = useQuasar();
     return {
       text,
 
@@ -66,7 +66,7 @@ export default {
           content: data,
         };
 
-        makePDFSendEmailBinary(docDefinition);
+        makePDFSendEmailBinary(docDefinition, $q.loading);
       },
 
       resetFormData() {
@@ -88,6 +88,7 @@ export default {
         };
         // URL to BLOB
         //let blob1 = await fetch(url).then((r) => r.blob());
+        $q.loading.show();
         axios
           .post(
             "http://localhost:8080/api/email/makePdfFileSaveToEmail",
@@ -95,11 +96,13 @@ export default {
             headers
           )
           .then(function (response) {
+            $q.loading.hide();
             if (response && response.data && response?.data?.message) {
               notifyMessage("teal", response.data.message, "thumb_up");
             }
           })
           .catch(function (response) {
+            $q.loading.hide();
             console.log(response);
             notifyMessage("negative", response?.message, "report_problem");
           });
