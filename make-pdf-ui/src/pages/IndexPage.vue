@@ -1,5 +1,5 @@
 <template>
-  <div class="items-start header-text"><h5>Export PDF Generation</h5></div>
+  <div class="items-start header-text"><h5></h5></div>
 </template>
 
 <script>
